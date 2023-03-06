@@ -23,88 +23,98 @@ class MotionManager: ObservableObject {
 }
 
 struct ContentView: View {
-    @State private var tap = false
+    @State private var tap1 = false
+    @State private var tap2 = false
     @State private var gradientAngle: Double = 0
+    @State private var showButtonTwo = false
     @StateObject private var motion = MotionManager()
     
     var body: some View {
         ZStack {
             Color("background").ignoresSafeArea()
             
-            VStack {
+            Button("Button Two") {
+                showButtonTwo.toggle()
+            }
+            
+            VStack(spacing: 120) {
                 ZStack {
+                    
+                    //MARK: Camera
+                    
                     CameraView(cameraPosition: .front)
                         .scaleEffect(6)
-                        .blur(radius: 10)
+                        .blur(radius: 6)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 80)
+                                .foregroundStyle(
+                                    Color("fill").opacity(0.5)
+                                    
+                                    //MARK: Inner Shadows
+                                    
+                                        .shadow(.inner(color: tap1 ? .black.opacity(0.4) : .white, radius: tap1 ? 8 : 6, x: 0, y: 6))
+                                        .shadow(.inner(color: tap1 ? .black.opacity(0.4) : .white, radius: tap1 ? 8 : 4, x: 0, y: -1))
+                                )
+                                .frame(width: 300, height: 100)
+                        )
+                    
+                    //MARK: Gradient
+                    
                         .overlay(
                             Circle()
                                 .fill(
                                     AngularGradient(gradient: Gradient(colors: [Color("color1"), Color("color2"), Color("color3"), Color("color4"), Color("color5"), Color("color6"), Color("color7"), Color("color8"), Color("color1")]), center: .center)
+                                    
                                 )
                                 .scaleEffect(5)
                                 .offset(y: -70)
                                 .rotationEffect(.degrees(25) * motion.x)
-                                .opacity(0.4)
+//                                .opacity(0.45)
                         )
-                        .overlay(
-                            Image("texture")
-                                .resizable()
-                                .opacity(0.2)
-                                .offset(x: motion.x)
-                        )
-                        .blendMode(.overlay)
-                        .saturation(0.34)
-                        .brightness(0.08)
-                        .saturation(0.95)
+                        .blendMode(.softLight)
+                        .saturation(0.45)
                         .frame(width: 300, height: 100)
                         .mask(RoundedRectangle(cornerRadius: 80)
                             .fill((Color("background"))
-                        ))
+                                 ))
+                    
+                    //MARK: Text
                     
                     Text("Button")
                         .font(.system(.title, weight: .semibold))
-                        .foregroundColor(Color("text"))
-                        .opacity(0.65)
-                        .shadow(color: .white.opacity(0.19), radius: 2, x: 0, y: 0)
-                        .shadow(color: .white.opacity(0.25), radius: 4, x: 0, y: 2)
-                    
-                    RoundedRectangle(cornerRadius: 80)
-                        .fill((Color.clear)
-                            .shadow(.inner(color: tap ? .black.opacity(0.1) : .white.opacity(0.25), radius: tap ? 8 : 4, x: 0, y: 6))
-                            .shadow(.inner(color: tap ? .black.opacity(0.1) : .white.opacity(0.3), radius: tap ? 8 : 2, x: 0, y: tap ? -2 : -1))
+                        .foregroundStyle(
+                            LinearGradient(
+                                colors: [Color("text1"), Color("text2")],
+                                startPoint: .topLeading,
+                                endPoint: .bottomTrailing
+                            )
                         )
-                        .frame(width: 300, height: 100)
-                        .shadow(color: tap ? .white.opacity(0.25) : .black.opacity(0.2), radius: tap ? 9 : 8, x: 0, y: tap ? 3 : 12)
-                        .shadow(color: tap ? .white.opacity(0.25) : .black.opacity(0.1), radius: tap ? 10 : 32, x: 0, y: tap ? -4 : 6)
-                }
-                .shadow(color: tap ? .white.opacity(0.25) : .black.opacity(0.2), radius: tap ? 9 : 8, x: 0, y: tap ? 3 : 12)
-                .shadow(color: tap ? .white.opacity(0.25) : .black.opacity(0.1), radius: tap ? 10 : 32, x: 0, y: tap ? -4 : 6)
-                
-                
-                ZStack {
-                    RoundedRectangle(cornerRadius: 80)
-                        .fill((Color("background"))
-                            .shadow(.inner(color: tap ? .black.opacity(0.1) : .white.opacity(0.25), radius: tap ? 8 : 4, x: 0, y: 6))
-                            .shadow(.inner(color: tap ? .black.opacity(0.1) : .white.opacity(0.3), radius: tap ? 8 : 2, x: 0, y: tap ? -2 : -1))
-                        )
-                        .frame(width: 300, height: 100)
-                        .shadow(color: tap ? .white.opacity(0.25) : .black.opacity(0.2), radius: tap ? 9 : 8, x: 0, y: tap ? 3 : 12)
-                        .shadow(color: tap ? .white.opacity(0.25) : .black.opacity(0.1), radius: tap ? 10 : 32, x: 0, y: tap ? -4 : 6)
+                        .opacity(0.8)
+                        .shadow(color: .white.opacity(0.15), radius: 2, x: 0, y: 0)
+                        .shadow(color: .white.opacity(0.15), radius: 4, x: 0, y: 2)
                     
-                    Text("Button")
-                        .font(.system(.title, weight: .semibold))
-                        .foregroundColor(Color("text"))
                 }
-            }
-            .onTapGesture {
-                tap = true
-                DispatchQueue.main.asyncAfter(deadline: .now() + 0.3) {
-                    tap = false
+                
+                //MARK: Drop Shadows
+                
+                .shadow(color: tap1 ? .white.opacity(0.2) : .black.opacity(0.25), radius: tap1 ? 9 : 8, x: 0, y: tap1 ? 3 : 12)
+                .shadow(color: tap1 ? .white.opacity(0.2) : .black.opacity(0.15), radius: tap1 ? 10 : 32, x: 0, y: tap1 ? -4 : 6)
+                
+                .onTapGesture {
+                    tap1 = true
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                        tap1 = false
+                    }
                 }
+                .scaleEffect(tap1 ? 0.96 : 1)
+                .animation(.spring(response: 0.4, dampingFraction: 0.6))
+                
+//                if self.showButtonTwo {
+//                    ButtonTwo()
+//                } else {
+//                    ButtonTwo().hidden()
+//                }
             }
-            .scaleEffect(tap ? 0.95 : 1)
-            .animation(.spring(response: 0.4, dampingFraction: 0.6))
-
         }
     }
 }

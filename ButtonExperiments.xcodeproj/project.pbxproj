@@ -13,6 +13,7 @@
 		C44D77C229B2B4FD00BC6CF8 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C44D77C129B2B4FD00BC6CF8 /* Preview Assets.xcassets */; };
 		C4DCBE5929B2D43400688CD0 /* SimpleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4DCBE5829B2D43300688CD0 /* SimpleButton.swift */; };
 		C4DCBE6229B2DB3800688CD0 /* CameraView in Frameworks */ = {isa = PBXBuildFile; productRef = C4DCBE6129B2DB3800688CD0 /* CameraView */; };
+		C4F2873C29B66C98004E32BA /* ButtonTwo.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4F2873B29B66C98004E32BA /* ButtonTwo.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -22,6 +23,7 @@
 		C44D77BE29B2B4FD00BC6CF8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C44D77C129B2B4FD00BC6CF8 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		C4DCBE5829B2D43300688CD0 /* SimpleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleButton.swift; sourceTree = "<group>"; };
+		C4F2873B29B66C98004E32BA /* ButtonTwo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonTwo.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -57,6 +59,7 @@
 			children = (
 				C44D77BA29B2B4FB00BC6CF8 /* ButtonExperimentsApp.swift */,
 				C44D77BC29B2B4FB00BC6CF8 /* ContentView.swift */,
+				C4F2873B29B66C98004E32BA /* ButtonTwo.swift */,
 				C4DCBE5829B2D43300688CD0 /* SimpleButton.swift */,
 				C44D77BE29B2B4FD00BC6CF8 /* Assets.xcassets */,
 				C44D77C029B2B4FD00BC6CF8 /* Preview Content */,
@@ -148,6 +151,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C4F2873C29B66C98004E32BA /* ButtonTwo.swift in Sources */,
 				C44D77BD29B2B4FB00BC6CF8 /* ContentView.swift in Sources */,
 				C44D77BB29B2B4FB00BC6CF8 /* ButtonExperimentsApp.swift in Sources */,
 				C4DCBE5929B2D43400688CD0 /* SimpleButton.swift in Sources */,
