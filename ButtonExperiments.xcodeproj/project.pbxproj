@@ -11,6 +11,8 @@
 		C44D77BD29B2B4FB00BC6CF8 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = C44D77BC29B2B4FB00BC6CF8 /* ContentView.swift */; };
 		C44D77BF29B2B4FD00BC6CF8 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C44D77BE29B2B4FD00BC6CF8 /* Assets.xcassets */; };
 		C44D77C229B2B4FD00BC6CF8 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C44D77C129B2B4FD00BC6CF8 /* Preview Assets.xcassets */; };
+		C4DCBE5929B2D43400688CD0 /* SimpleButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4DCBE5829B2D43300688CD0 /* SimpleButton.swift */; };
+		C4DCBE6229B2DB3800688CD0 /* CameraView in Frameworks */ = {isa = PBXBuildFile; productRef = C4DCBE6129B2DB3800688CD0 /* CameraView */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +21,7 @@
 		C44D77BC29B2B4FB00BC6CF8 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		C44D77BE29B2B4FD00BC6CF8 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C44D77C129B2B4FD00BC6CF8 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		C4DCBE5829B2D43300688CD0 /* SimpleButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SimpleButton.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -26,6 +29,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C4DCBE6229B2DB3800688CD0 /* CameraView in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -53,6 +57,7 @@
 			children = (
 				C44D77BA29B2B4FB00BC6CF8 /* ButtonExperimentsApp.swift */,
 				C44D77BC29B2B4FB00BC6CF8 /* ContentView.swift */,
+				C4DCBE5829B2D43300688CD0 /* SimpleButton.swift */,
 				C44D77BE29B2B4FD00BC6CF8 /* Assets.xcassets */,
 				C44D77C029B2B4FD00BC6CF8 /* Preview Content */,
 			);
@@ -83,6 +88,9 @@
 			dependencies = (
 			);
 			name = ButtonExperiments;
+			packageProductDependencies = (
+				C4DCBE6129B2DB3800688CD0 /* CameraView */,
+			);
 			productName = ButtonExperiments;
 			productReference = C44D77B729B2B4FB00BC6CF8 /* ButtonExperiments.app */;
 			productType = "com.apple.product-type.application";
@@ -111,6 +119,9 @@
 				Base,
 			);
 			mainGroup = C44D77AE29B2B4FB00BC6CF8;
+			packageReferences = (
+				C4DCBE6029B2DB3800688CD0 /* XCRemoteSwiftPackageReference "CameraView" */,
+			);
 			productRefGroup = C44D77B829B2B4FB00BC6CF8 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -139,6 +150,7 @@
 			files = (
 				C44D77BD29B2B4FB00BC6CF8 /* ContentView.swift in Sources */,
 				C44D77BB29B2B4FB00BC6CF8 /* ButtonExperimentsApp.swift in Sources */,
+				C4DCBE5929B2D43400688CD0 /* SimpleButton.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -270,6 +282,7 @@
 				DEVELOPMENT_TEAM = J4JD84FNLS;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Show Camera";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -299,6 +312,7 @@
 				DEVELOPMENT_TEAM = J4JD84FNLS;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_NSCameraUsageDescription = "Show Camera";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -339,6 +353,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		C4DCBE6029B2DB3800688CD0 /* XCRemoteSwiftPackageReference "CameraView" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/brettfazio/CameraView";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.0.1;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		C4DCBE6129B2DB3800688CD0 /* CameraView */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = C4DCBE6029B2DB3800688CD0 /* XCRemoteSwiftPackageReference "CameraView" */;
+			productName = CameraView;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = C44D77AF29B2B4FB00BC6CF8 /* Project object */;
 }
