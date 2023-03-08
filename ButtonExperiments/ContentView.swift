@@ -24,39 +24,44 @@ class MotionManager: ObservableObject {
 
 struct ContentView: View {
     @State private var tap1 = false
-    @State private var tap2 = false
     @State private var gradientAngle: Double = 0
-    @State private var showButtonTwo = false
     @StateObject private var motion = MotionManager()
     
     var body: some View {
         ZStack {
             Color("background").ignoresSafeArea()
-            
-            Button("Button Two") {
-                showButtonTwo.toggle()
-            }
-            
             VStack(spacing: 120) {
                 ZStack {
-                    
+                
                     //MARK: Camera
                     
                     CameraView(cameraPosition: .front)
                         .scaleEffect(6)
-                        .blur(radius: 6)
+                        .blur(radius: 6, opaque: true)
+                        .overlay(
+                            RoundedRectangle(cornerRadius: 80)
+                                .stroke(style: .init(lineWidth: 1))
+                                .frame(width: 301, height: 101)
+                            
+                            //MARK: Inner Shadows
+                            
+                                .shadow(color: tap1 ? .black.opacity(1) : .white, radius: tap1 ? 8 : 6, x: 0, y: 6)
+                                .shadow(color: tap1 ? .black.opacity(1) : .white, radius: tap1 ? 8 : 4, x: 0, y: -1)
+                                .foregroundColor(.black)
+                        )
                         .overlay(
                             RoundedRectangle(cornerRadius: 80)
                                 .foregroundStyle(
-                                    Color("fill").opacity(0.5)
-                                    
-                                    //MARK: Inner Shadows
-                                    
-                                        .shadow(.inner(color: tap1 ? .black.opacity(0.4) : .white, radius: tap1 ? 8 : 6, x: 0, y: 6))
-                                        .shadow(.inner(color: tap1 ? .black.opacity(0.4) : .white, radius: tap1 ? 8 : 4, x: 0, y: -1))
+                                    Color("fill").opacity(0.4)
+
+                                    //MARK: Extra Inner Shadows
+
+                                        .shadow(.inner(color: tap1 ? .black.opacity(0.6) : .white.opacity(0.6), radius: tap1 ? 8 : 10, x: 0, y: 6))
+                                        .shadow(.inner(color: tap1 ? .black.opacity(0.6) : .white.opacity(0.6), radius: tap1 ? 8 : 5, x: 0, y: -1))
                                 )
                                 .frame(width: 300, height: 100)
                         )
+                        .saturation(0.6)
                     
                     //MARK: Gradient
                     
@@ -69,7 +74,6 @@ struct ContentView: View {
                                 .scaleEffect(5)
                                 .offset(y: -70)
                                 .rotationEffect(.degrees(25) * motion.x)
-//                                .opacity(0.45)
                         )
                         .blendMode(.softLight)
                         .saturation(0.45)
@@ -90,8 +94,8 @@ struct ContentView: View {
                             )
                         )
                         .opacity(0.8)
-                        .shadow(color: .white.opacity(0.15), radius: 2, x: 0, y: 0)
-                        .shadow(color: .white.opacity(0.15), radius: 4, x: 0, y: 2)
+                        .shadow(color: .white.opacity(0.1), radius: 1, x: 0, y: 0)
+                        .shadow(color: .white.opacity(0.1), radius: 4, x: 0, y: 1)
                     
                 }
                 
@@ -102,18 +106,13 @@ struct ContentView: View {
                 
                 .onTapGesture {
                     tap1 = true
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.25) {
                         tap1 = false
                     }
                 }
                 .scaleEffect(tap1 ? 0.96 : 1)
                 .animation(.spring(response: 0.4, dampingFraction: 0.6))
                 
-//                if self.showButtonTwo {
-//                    ButtonTwo()
-//                } else {
-//                    ButtonTwo().hidden()
-//                }
             }
         }
     }
